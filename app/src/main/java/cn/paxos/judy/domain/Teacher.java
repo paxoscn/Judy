@@ -1,6 +1,8 @@
 package cn.paxos.judy.domain;
 
 import java.lang.ref.SoftReference;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by mergen on 16-5-24.
@@ -9,12 +11,17 @@ public class Teacher {
 
     private final int id;
     private final String name;
-    private final SoftReference<Institution> institution;
+    private final Institution institution;
+    private final Map<Integer, Clazz> classes = new HashMap<>();
 
-    private Teacher(int id, String name, Institution institution) {
+    public Teacher(int id, String name, Institution institution) {
         this.id = id;
         this.name = name;
-        this.institution = new SoftReference<>(institution);
+        this.institution = institution;
+    }
+
+    public void addClass(Clazz clazz) {
+        classes.put(clazz.getId(), clazz);
     }
 
     public int getId() {
@@ -26,7 +33,7 @@ public class Teacher {
     }
 
     public Institution getInstitution() {
-        return institution.get();
+        return institution;
     }
 
 }

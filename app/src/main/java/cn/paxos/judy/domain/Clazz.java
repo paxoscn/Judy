@@ -11,14 +11,13 @@ public class Clazz {
 
     private final int id;
     private final String name;
-    private final SoftReference<Institution> institution;
-    private final Map<Integer, SoftReference<Teacher>> teachers = new HashMap<>();
-    private final Map<Integer, SoftReference<Student>> students = new HashMap<>();
+    private final Teacher teacher;
+    private final Map<Integer, Student> students = new HashMap<>();
 
-    private Clazz(int id, String name, Institution institution) {
+    public Clazz(int id, String name, Teacher teacher) {
         this.id = id;
         this.name = name;
-        this.institution = new SoftReference<>(institution);
+        this.teacher = teacher;
     }
 
     public int getId() {
@@ -29,8 +28,12 @@ public class Clazz {
         return name;
     }
 
-    public Institution getInstitution() {
-        return institution.get();
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public Map<Integer, Student> getStudents() {
+        return students;
     }
 
 }

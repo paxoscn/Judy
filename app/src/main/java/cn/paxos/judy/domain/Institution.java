@@ -8,8 +8,19 @@ import java.util.Map;
  */
 public class Institution {
 
+    public static final Institution instance = new Institution();
+
     private final Map<Integer, Teacher> teachers = new HashMap<>();
     private final Map<Integer, Clazz> classes = new HashMap<>();
+
+    public Institution() {
+        // FIXME
+        Teacher firstTeacher = new Teacher(1, "Ada老师", this);
+        teachers.put(1, firstTeacher);
+        Clazz firstClass = new Clazz(1, "周六 Basic One", firstTeacher);
+        classes.put(1, firstClass);
+        firstTeacher.addClass(firstClass);
+    }
 
     public Map<Integer, Teacher> getTeachers() {
         return teachers;

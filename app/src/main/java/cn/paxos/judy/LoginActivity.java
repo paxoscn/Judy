@@ -24,6 +24,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.paxos.judy.domain.User;
+
 public class LoginActivity extends AppCompatActivity {
 
     /**
@@ -188,16 +190,7 @@ public class LoginActivity extends AppCompatActivity {
 
         @Override
         protected Boolean doInBackground(Void... params) {
-            // TODO: attempt authentication against a network service.
-
-            try {
-                // Simulate network access.
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                return false;
-            }
-
-            return true;
+            return User.login(mTel, mPassword);
         }
 
         @Override
