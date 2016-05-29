@@ -23,26 +23,26 @@ public class Clazz {
         this.name = name;
         this.teacher = teacher;
         // FIXME
-        ClassInstance instance = new ClassInstance(1, 20160501);
+        ClassInstance instance = new ClassInstance(1, 201605011300L);
         instance.setTeacherReview(new TeacherReview());
         instance.setHomework(new Homework());
         instances.add(instance);
-        instance = new ClassInstance(2, 20160508);
+        instance = new ClassInstance(2, 201605081300L);
         instance.setTeacherReview(new TeacherReview());
         instance.setHomework(new Homework());
         instances.add(instance);
-        instance = new ClassInstance(3, 20160515);
+        instance = new ClassInstance(3, 201605151300L);
         instance.setTeacherReview(new TeacherReview());
         instance.setHomework(new Homework());
         instance.setExam(new Exam());
         instances.add(instance);
-        instance = new ClassInstance(4, 20160522);
+        instance = new ClassInstance(4, 201605221300L);
         instance.setTeacherReview(new TeacherReview());
         instance.setHomework(new Homework());
         instances.add(instance);
-        instance = new ClassInstance(5, 20160529);
+        instance = new ClassInstance(5, 201605291300L);
         instances.add(instance);
-        instance = new ClassInstance(6, 20160605);
+        instance = new ClassInstance(6, 201606051300L);
         instances.add(instance);
     }
 

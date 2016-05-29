@@ -6,23 +6,23 @@ package cn.paxos.judy.domain;
 public class ClassInstance {
 
     private final int id;
-    private final int date;
+    private final long time;
 
     private TeacherReview teacherReview = null;
     private Homework homework = null;
     private Exam exam = null;
 
-    public ClassInstance(int id, int date) {
+    public ClassInstance(int id, long time) {
         this.id = id;
-        this.date = date;
+        this.time = time;
     }
 
     public int getId() {
         return id;
     }
 
-    public int getDate() {
-        return date;
+    public long getTime() {
+        return time;
     }
 
     public TeacherReview getTeacherReview() {

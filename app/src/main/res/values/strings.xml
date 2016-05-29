@@ -5,6 +5,10 @@
     <string name="class_name_format">Class: %1$d</string>
     <string name="title_activity_login">登录</string>
     <string name="action_switch_class">切换班级</string>
+    <string name="text_pending">正在备课中</string>
+    <string name="button_teacher_review">评语</string>
+    <string name="button_homework">作业</string>
+    <string name="button_exam">考试</string>
 
     <!-- Strings related to login -->
     <string name="prompt_tel">手机</string>

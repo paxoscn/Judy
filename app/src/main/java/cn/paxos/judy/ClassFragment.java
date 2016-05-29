@@ -15,6 +15,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import cn.paxos.judy.domain.ClassInstance;
@@ -60,10 +62,12 @@ public class ClassFragment extends Fragment {
     }
 
     public final class ViewHolder{
-        public ImageView img;
-        public TextView title;
-        public TextView info;
-        public Button viewBtn;
+        public TextView date;
+        public TextView time;
+        public TextView pending;
+        public Button teacherReviewBtn;
+        public Button homeworkBtn;
+        public Button examBtn;
     }
 
     public class InstancesAdapter extends BaseAdapter {
@@ -97,19 +101,28 @@ public class ClassFragment extends Fragment {
             if (convertView == null) {
                 holder=new ViewHolder();
                 convertView = mInflater.inflate(R.layout.list_class_instances, null);
-                holder.img = (ImageView)convertView.findViewById(R.id.img);
-                holder.title = (TextView)convertView.findViewById(R.id.title);
-                holder.info = (TextView)convertView.findViewById(R.id.info);
-                holder.viewBtn = (Button)convertView.findViewById(R.id.view_btn);
+                holder.date = (TextView)convertView.findViewById(R.id.date);
+                holder.time = (TextView)convertView.findViewById(R.id.time);
+                holder.pending = (TextView)convertView.findViewById(R.id.pending);
+                holder.teacherReviewBtn = (Button)convertView.findViewById(R.id.teacher_review_btn);
+                holder.homeworkBtn = (Button)convertView.findViewById(R.id.homework_btn);
+                holder.examBtn = (Button)convertView.findViewById(R.id.exam_btn);
                 convertView.setTag(holder);
             }else {
                 holder = (ViewHolder)convertView.getTag();
             }
             ClassInstance instance = instances.get(position);
             ///holder.img.setBackgroundResource(instance.get("img"));
-            holder.title.setText("" + instance.getDate());
+            holder.date.setText(String.format("%02d-%02d", (instance.getTime() / 1000000) % 100, (instance.getTime() / 10000) % 100));
+            holder.time.setText(String.format("%02d:%02d", (instance.getTime() / 100) % 100, instance.getTime() % 100));
+            // Buffer 5 hours.
+            boolean pending = Long.parseLong(new SimpleDateFormat("yyyyMMddHHmm").format(new Date())) < instance.getTime() + 500;
+            holder.pending.setVisibility(pending ? View.VISIBLE: View.INVISIBLE);
+            holder.teacherReviewBtn.setVisibility(pending ? View.INVISIBLE: View.VISIBLE);
+            holder.homeworkBtn.setVisibility(pending ? View.INVISIBLE: View.VISIBLE);
+            holder.examBtn.setVisibility(pending ? View.INVISIBLE: View.VISIBLE);
             ///holder.info.setText(instance.get("info"));
-            holder.viewBtn.setOnClickListener(new View.OnClickListener() {
+            holder.teacherReviewBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     showInfo();
