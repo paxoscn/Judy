@@ -69,10 +69,12 @@ public class MainActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
+        System.out.println("menu item id = " + id);
+
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+        ///if (id == R.id.action_switch_class) {
+        ///    return true;
+        ///}
 
         return super.onOptionsItemSelected(item);
     }

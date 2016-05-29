@@ -15,10 +15,16 @@ public class Institution {
 
     public Institution() {
         // FIXME
-        Teacher firstTeacher = new Teacher(1, "Ada老师", this);
+        Teacher firstTeacher = new Teacher(1, "Ada", this);
         teachers.put(1, firstTeacher);
-        Clazz firstClass = new Clazz(1, "周六 Basic One", firstTeacher);
+        Teacher secondTeacher = new Teacher(2, "Leon", this);
+        teachers.put(2, secondTeacher);
+        Clazz firstClass = new Clazz(1, "周三 Basic One", firstTeacher);
         classes.put(1, firstClass);
+        Clazz secondClass = new Clazz(2, "周六 Basic One", firstTeacher);
+        classes.put(2, secondClass);
+        Clazz thirdClass = new Clazz(3, "周日 Basic One", secondTeacher);
+        classes.put(3, thirdClass);
         firstTeacher.addClass(firstClass);
     }
 

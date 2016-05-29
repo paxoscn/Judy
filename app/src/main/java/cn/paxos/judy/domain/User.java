@@ -1,6 +1,9 @@
 package cn.paxos.judy.domain;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -28,8 +31,12 @@ public class User {
     public static boolean login(String mTel, String mPassword) {
         // TODO
         currentUser = new User(1, "张女士");
-        Clazz firstClass = Institution.instance.getClasses().values().iterator().next();
+        Iterator<Clazz> classIter = Institution.instance.getClasses().values().iterator();
+        Clazz firstClass = classIter.next();
+        Clazz secondClass = classIter.next();
+        Clazz thirdClass = classIter.next();
         currentUser.getStudents().values().iterator().next().getClasses().put(firstClass.getId(), firstClass);
+        currentUser.getStudents().values().iterator().next().getClasses().put(thirdClass.getId(), thirdClass);
         return true;
     }
 
@@ -40,6 +47,18 @@ public class User {
     public Clazz selectDefaultClass() {
         // TODO
         return students.values().iterator().next().getClasses().values().iterator().next();
+    }
+
+    public Iterable<Clazz> listOtherClasses(Clazz viewedClass) {
+        List<Clazz> others = new ArrayList<>();
+        for (Student student : students.values()) {
+            for (Clazz clazz : student.getClasses().values()) {
+                if (viewedClass.getId() != clazz.getId()) {
+                    others.add(clazz);
+                }
+            }
+        }
+        return others;
     }
 
     public Integer getId() {
@@ -53,5 +72,4 @@ public class User {
     public Map<Integer, Student> getStudents() {
         return students;
     }
-
 }

@@ -3,8 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="cn.paxos.judy.MainActivity">
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/action_switch_class"
         android:orderInCategory="100"
         android:title="@string/action_switch_class"
-        app:showAsAction="always" />
+        app:showAsAction="always">
+
+        <menu></menu>
+
+    </item>
 </menu>

@@ -23,26 +23,39 @@ public class Clazz {
         this.name = name;
         this.teacher = teacher;
         // FIXME
-        ClassInstance instance = new ClassInstance(1, 201605011300L);
+        ClassInstance instance = new ClassInstance(1, 201603081300L + id);
         instance.setTeacherReview(new TeacherReview());
         instance.setHomework(new Homework());
         instances.add(instance);
-        instance = new ClassInstance(2, 201605081300L);
+        instance = new ClassInstance(2, 201603151300L + id);
         instance.setTeacherReview(new TeacherReview());
         instance.setHomework(new Homework());
         instances.add(instance);
-        instance = new ClassInstance(3, 201605151300L);
+        instance = new ClassInstance(3, 201603231300L + id);
         instance.setTeacherReview(new TeacherReview());
         instance.setHomework(new Homework());
         instance.setExam(new Exam());
         instances.add(instance);
-        instance = new ClassInstance(4, 201605221300L);
+        instance = new ClassInstance(4, 201605011300L + id);
         instance.setTeacherReview(new TeacherReview());
         instance.setHomework(new Homework());
         instances.add(instance);
-        instance = new ClassInstance(5, 201605291300L);
+        instance = new ClassInstance(5, 201605081300L + id);
+        instance.setTeacherReview(new TeacherReview());
+        instance.setHomework(new Homework());
         instances.add(instance);
-        instance = new ClassInstance(6, 201606051300L);
+        instance = new ClassInstance(6, 201605151300L + id);
+        instance.setTeacherReview(new TeacherReview());
+        instance.setHomework(new Homework());
+        instance.setExam(new Exam());
+        instances.add(instance);
+        instance = new ClassInstance(7, 201605221300L + id);
+        instance.setTeacherReview(new TeacherReview());
+        instance.setHomework(new Homework());
+        instances.add(instance);
+        instance = new ClassInstance(8, 201605291300L + id);
+        instances.add(instance);
+        instance = new ClassInstance(9, 201606051300L + id);
         instances.add(instance);
     }
 
