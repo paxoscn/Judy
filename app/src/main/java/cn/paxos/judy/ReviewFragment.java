@@ -4,22 +4,16 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.SubMenu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -35,22 +29,22 @@ import cn.paxos.judy.domain.User;
 /**
  * Created by mergen on 16-5-28.
  */
-public class ClassFragment extends Fragment {
+public class ReviewFragment extends Fragment {
 
-    private Clazz viewedClass;
+    private ClassInstance instance;
 
-    public ClassFragment() {
-        viewedClass = User.getCurrentUser().selectDefaultClass();
+    public void setInstance(ClassInstance instance) {
+        this.instance = instance;
     }
 
     @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup container,
                              final Bundle savedInstanceState) {
-        final int fragmentId = R.layout.fragment_class;
+        System.out.println("Review " + instance.getId());
+        final int fragmentId = R.layout.fragment_review;
         View rootView = inflater.inflate(fragmentId, container, false);
-        ClassInstancesFragment classInstancesFragment = new ClassInstancesFragment();
-        classInstancesFragment.setViewedClass(viewedClass);
-        this.getFragmentManager().beginTransaction().add(R.id.frame_container_class, classInstancesFragment).commit();
+        TextView textView = (TextView) rootView.findViewById(R.id.review_text);
+        textView.setText("Review " + instance.getId());
         return rootView;
     }
 
