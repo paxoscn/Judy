@@ -8,7 +8,7 @@ public class ClassInstance {
     private final int id;
     private final long time;
 
-    private TeacherReview teacherReview = null;
+    private ChatSession chatSession = null;
     private Homework homework = null;
     private Exam exam = null;
 
@@ -25,12 +25,12 @@ public class ClassInstance {
         return time;
     }
 
-    public TeacherReview getTeacherReview() {
-        return teacherReview;
+    public ChatSession getChatSession() {
+        return chatSession;
     }
 
-    public void setTeacherReview(TeacherReview teacherReview) {
-        this.teacherReview = teacherReview;
+    public void setChatSession(ChatSession chatSession) {
+        this.chatSession = chatSession;
     }
 
     public Homework getHomework() {

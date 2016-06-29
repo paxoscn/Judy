@@ -74,7 +74,7 @@ public class ClassInstancesFragment extends Fragment {
         }
         ///Drawable drawable = ContextCompat.getDrawable(this.getContext(), R.drawable.ic_launcher);
         ///toolbar.setOverflowIcon(drawable);
-        ListView listView = (ListView) rootView.findViewById(R.id.listView);
+        ListView listView = (ListView) rootView.findViewById(R.id.listView_class_instances);
         listView.setAdapter(new InstancesAdapter(rootView.getContext(), viewedClass.listInstances()));
         return rootView;
     }
@@ -136,17 +136,17 @@ public class ClassInstancesFragment extends Fragment {
             // Buffer 5 hours.
             boolean pending = Long.parseLong(new SimpleDateFormat("yyyyMMddHHmm").format(new Date())) < instance.getTime() + 500;
             holder.pending.setVisibility(pending ? View.VISIBLE: View.INVISIBLE);
-            holder.teacherReviewBtn.setVisibility(pending || instance.getTeacherReview() == null ? View.INVISIBLE: View.VISIBLE);
+            holder.teacherReviewBtn.setVisibility(pending || instance.getChatSession() == null ? View.INVISIBLE: View.VISIBLE);
             holder.homeworkBtn.setVisibility(pending || instance.getHomework() == null ? View.INVISIBLE: View.VISIBLE);
             holder.examBtn.setVisibility(pending || instance.getExam() == null ? View.INVISIBLE: View.VISIBLE);
             ///holder.info.setText(instance.get("info"));
             holder.teacherReviewBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ReviewFragment reviewFragment = new ReviewFragment();
-                    reviewFragment.setInstance(instance);
+                    ChatFragment chatFragment = new ChatFragment();
+                    chatFragment.setSession(instance.getChatSession());
                     FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                    transaction.add(R.id.frame_container_class, reviewFragment);
+                    transaction.add(R.id.frame_container_class, chatFragment);
                     transaction.addToBackStack(null);
                     transaction.commit();
         /*
